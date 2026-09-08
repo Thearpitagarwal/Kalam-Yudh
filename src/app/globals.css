@@ -1,0 +1,309 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Pen Fight — chalk & paper design system
+   ============================================================ */
+
+:root {
+  --chalk-bg: #1d4436;
+  --chalk-bg-deep: #143429;
+  --chalk-edge: rgba(246, 242, 228, 0.9);
+  --chalk-soft: rgba(246, 242, 228, 0.55);
+  --chalk-faint: rgba(246, 242, 228, 0.28);
+  --paper: #f7eed7;
+  --paper-deep: #efdfb9;
+  --ink: #33251a;
+  --amber: #ffb444;
+  --amber-deep: #e8930c;
+  --blue-pen: #3d7bfd;
+  --red-pen: #fb5f76;
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  background: #1a3a2d;
+  font-family: var(--font-hind), system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-display {
+  font-family: var(--font-baloo), system-ui, sans-serif;
+}
+.font-hand {
+  font-family: var(--font-caveat), cursive;
+}
+
+/* ---------- chalk surfaces ---------- */
+
+.chalk-panel {
+  position: relative;
+  background:
+    radial-gradient(140% 120% at 30% 15%, rgba(255, 255, 255, 0.06), transparent 55%),
+    linear-gradient(160deg, #245040 0%, var(--chalk-bg) 45%, var(--chalk-bg-deep) 100%);
+  border: 2.5px solid var(--chalk-edge);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 0 0 5px rgba(18, 45, 34, 0.9),
+    inset 0 0 60px rgba(0, 0, 0, 0.35),
+    0 24px 60px rgba(15, 10, 4, 0.55);
+  color: #f6f2e4;
+}
+
+.chalk-frame {
+  border: 2px dashed var(--chalk-faint);
+  border-radius: 14px;
+}
+
+.chalk-hr {
+  height: 2px;
+  background-image: linear-gradient(90deg, transparent, var(--chalk-soft), transparent);
+}
+
+/* hand-drawn underline flourish */
+.chalk-underline {
+  position: relative;
+  display: inline-block;
+}
+.chalk-underline::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -0.18em;
+  height: 0.14em;
+  background: var(--amber);
+  border-radius: 999px;
+  transform: rotate(-1deg);
+  opacity: 0.95;
+}
+
+/* ---------- buttons ---------- */
+
+.chalk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 14px;
+  border: 2px dashed var(--chalk-soft);
+  color: #f6f2e4;
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 1.02rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+.chalk-btn:hover {
+  border-style: solid;
+  border-color: var(--chalk-edge);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(10, 6, 2, 0.35);
+}
+.chalk-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+.chalk-btn:focus-visible {
+  outline: 3px solid rgba(255, 180, 68, 0.8);
+  outline-offset: 2px;
+}
+.chalk-btn:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.chalk-btn--amber {
+  background: linear-gradient(180deg, #ffc25e, var(--amber));
+  border: 2.5px solid #ffe2ae;
+  color: #23301f;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 0 14px 30px rgba(232, 147, 12, 0.35), inset 0 -3px 0 rgba(120, 66, 4, 0.35);
+}
+.chalk-btn--amber:hover {
+  background: linear-gradient(180deg, #ffd184, #ffbb4d);
+  box-shadow: 0 18px 36px rgba(232, 147, 12, 0.45), inset 0 -3px 0 rgba(120, 66, 4, 0.35);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 2px dashed var(--chalk-soft);
+  color: #f6f2e4;
+  background: rgba(20, 45, 35, 0.65);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease;
+  backdrop-filter: blur(4px);
+  touch-action: manipulation;
+}
+.icon-btn:hover {
+  border-style: solid;
+  border-color: var(--chalk-edge);
+  transform: translateY(-1px);
+}
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* ---------- paper surfaces ---------- */
+
+.paper-panel {
+  background:
+    linear-gradient(90deg, transparent 0 46px, rgba(220, 96, 96, 0.5) 46px 48px, transparent 48px),
+    repeating-linear-gradient(180deg, transparent 0 34px, rgba(100, 140, 200, 0.28) 34px 36px),
+    linear-gradient(180deg, var(--paper), var(--paper-deep));
+  border-radius: 18px;
+  border: 1px solid #d9c69b;
+  box-shadow: 0 24px 60px rgba(30, 18, 6, 0.5), inset 0 2px 0 rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+}
+
+/* ---------- HUD bits ---------- */
+
+.hud-plaque {
+  background:
+    linear-gradient(160deg, rgba(36, 80, 64, 0.92), rgba(18, 45, 34, 0.94));
+  border: 2px solid var(--chalk-edge);
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(12, 7, 2, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(5px);
+  color: #f6f2e4;
+}
+
+.tally-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 999px;
+  border: 1.6px solid rgba(246, 242, 228, 0.55);
+  display: inline-block;
+}
+
+.power-track {
+  background: rgba(16, 40, 30, 0.85);
+  border: 2px solid var(--chalk-edge);
+  box-shadow: 0 10px 26px rgba(10, 5, 2, 0.45), inset 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.power-fill {
+  background: linear-gradient(90deg, #7ee787, #ffd166 55%, #ff5d5d);
+  box-shadow: 0 0 14px rgba(255, 209, 102, 0.65);
+}
+
+.hint-chip {
+  background: rgba(18, 45, 34, 0.72);
+  border: 1.5px dashed rgba(246, 242, 228, 0.35);
+  backdrop-filter: blur(4px);
+  color: rgba(246, 242, 228, 0.9);
+}
+
+/* ---------- toasts ---------- */
+
+.toast-item {
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 800;
+  text-shadow: 0 3px 0 rgba(20, 12, 4, 0.35), 0 10px 30px rgba(10, 5, 1, 0.5);
+  animation: toast-pop 1.5s cubic-bezier(0.2, 1.4, 0.36, 1) forwards;
+  letter-spacing: 0.04em;
+}
+
+@keyframes toast-pop {
+  0% { opacity: 0; transform: translateY(18px) scale(0.6) rotate(-3deg); }
+  12% { opacity: 1; transform: translateY(0) scale(1.12) rotate(1.5deg); }
+  22% { transform: scale(1) rotate(0deg); }
+  78% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: translateY(-26px) scale(0.94); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) both; }
+
+@keyframes card-in {
+  0% { opacity: 0; transform: translateY(26px) scale(0.94) rotate(-1.2deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(-0.4deg); }
+}
+.card-in { animation: card-in 0.5s cubic-bezier(0.2, 1.25, 0.36, 1) both; }
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 6s linear infinite; }
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.pulse-soft { animation: pulse-soft 1.6s ease-in-out infinite; }
+
+@keyframes bounce-ghost {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+.bounce-ghost { animation: bounce-ghost 2.4s ease-in-out infinite; }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50% { transform: rotate(1.6deg); }
+}
+.wiggle { animation: wiggle 3.2s ease-in-out infinite; }
+
+@keyframes pen-float {
+  0%, 100% { transform: translateY(0) rotate(-14deg); }
+  50% { transform: translateY(-8px) rotate(-8deg); }
+}
+.pen-float { animation: pen-float 3.6s ease-in-out infinite; }
+
+/* vignette + grain overlays for immersion */
+.vignette {
+  background:
+    radial-gradient(120% 90% at 50% 38%, transparent 55%, rgba(24, 14, 4, 0.35) 88%, rgba(18, 10, 2, 0.55) 100%);
+}
+
+.grain-overlay {
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* code lettering */
+.code-letters {
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.55em;
+  text-indent: 0.55em;
+}
+
+.room-input {
+  font-family: var(--font-baloo), sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.55em;
+  text-indent: 0.55em;
+  text-transform: uppercase;
+  background: rgba(16, 40, 30, 0.8);
+  border: 2px dashed var(--chalk-soft);
+  color: #f6f2e4;
+  caret-color: var(--amber);
+}
+.room-input:focus {
+  outline: none;
+  border-style: solid;
+  border-color: var(--amber);
+}
+
+::selection {
+  background: rgba(255, 180, 68, 0.45);
+}
